@@ -1,4 +1,4 @@
-const LINE_ADD_FRIEND_URL = "https://lin.ee/XXXXXXX"; // TODO: 実際のURL に差し替え
+const LINE_ADD_FRIEND_URL = "https://lin.ee/Y5P8ovy";
 
 type Variant = "header" | "inline" | "footer";
 
