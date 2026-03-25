@@ -15,12 +15,12 @@ export const metadata: Metadata = {
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="ja">
-      <body className={`${geist.className} bg-gray-50 text-gray-900`}>
+      <body className={`${geist.className} bg-[#F8F9FA] text-[#333333]`}>
         <Header />
-        <main className="max-w-5xl mx-auto px-4 py-8">{children}</main>
+        <main className="max-w-5xl mx-auto px-4 py-12">{children}</main>
         <footer>
           <LineCTABanner variant="footer" />
-          <div className="text-center text-xs text-gray-400 py-4">
+          <div className="text-center text-xs text-[#6C757D] py-4">
             © 2026 JKK空き家速報 — 非公式サービス
           </div>
         </footer>

@@ -46,7 +46,7 @@ export function VacancyDashboard() {
   return (
     <div>
       <div className="flex items-center justify-between mb-4">
-        <p className="text-gray-500 text-sm">
+        <p className="text-[#6C757D] text-sm">
           {data.properties.length}物件 / 合計{data.properties.reduce((s, p) => s + p.total, 0)}戸
         </p>
         <ElapsedTime updatedAt={data.updated_at} />

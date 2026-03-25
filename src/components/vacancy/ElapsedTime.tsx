@@ -12,6 +12,6 @@ export function ElapsedTime({ updatedAt }: { updatedAt: string }) {
   }, [updatedAt]);
 
   return (
-    <span className="text-sm font-medium text-green-600">⚡ {label}</span>
+    <span className="text-sm font-medium text-[#001F5B]">⚡ {label}</span>
   );
 }

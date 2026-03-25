@@ -7,19 +7,19 @@ export function PropertyCard({ property }: { property: Property }) {
   const roomEntries = Object.entries(property.rooms).filter(([, count]) => count > 0);
 
   return (
-    <div className="bg-white rounded-2xl shadow-sm border border-gray-100 p-5">
-      <div className="flex items-start justify-between gap-2 mb-3">
-        <h3 className="font-bold text-gray-900 text-base leading-snug">{property.name}</h3>
-        <span className="shrink-0 bg-red-100 text-red-700 text-xs font-bold px-2 py-1 rounded-full">
+    <div className="bg-white rounded-[4px] shadow-sm border border-gray-200 p-6">
+      <div className="flex items-start justify-between gap-2 mb-4">
+        <h3 className="font-bold text-[#001F5B] text-base leading-snug">{property.name}</h3>
+        <span className="shrink-0 border border-[#001F5B] text-[#001F5B] text-xs font-bold px-2 py-1 rounded-[4px]">
           {property.total}戸空き
         </span>
       </div>
 
-      <div className="flex flex-wrap gap-2 mb-4">
+      <div className="flex flex-wrap gap-2 mb-5">
         {roomEntries.map(([room, count]) => (
           <span
             key={room}
-            className="bg-gray-100 text-gray-700 text-xs px-2 py-1 rounded-md"
+            className="bg-[#F8F9FA] text-[#6C757D] text-xs px-2 py-1 rounded-[4px]"
           >
             {room}: {count}戸
           </span>
@@ -31,13 +31,13 @@ export function PropertyCard({ property }: { property: Property }) {
           href="https://www.to-kousya.or.jp/chintai/reco/index.html"
           target="_blank"
           rel="noopener noreferrer"
-          className="flex-1 text-center bg-[#06C755] text-white text-sm font-bold py-2 rounded-lg"
+          className="flex-1 text-center border border-[#001F5B] text-[#001F5B] text-sm font-bold py-2 rounded-[4px]"
         >
           物件を見る
         </a>
         <a
           href={MOVING_ESTIMATE_URL}
-          className="flex-1 text-center bg-orange-500 text-white text-sm font-bold py-2 rounded-lg"
+          className="flex-1 text-center border border-[#001F5B] text-[#001F5B] text-sm font-bold py-2 rounded-[4px]"
         >
           引越し見積もり
         </a>
