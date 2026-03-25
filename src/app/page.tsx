@@ -25,7 +25,7 @@ export default async function Home() {
               JKKの空き家が出た瞬間、<br />あなたのLINEに届く。
             </h1>
             <p className="text-lg text-[#6C757D] mb-12 leading-relaxed max-w-lg">
-              AIが10分おきに監視。礼金・更新料・仲介手数料0円の物件を誰よりも早くつかむ。
+              礼金・更新料・仲介手数料0円の物件を誰よりも早くつかむ。
             </p>
             <div className="flex flex-col sm:flex-row gap-4">
               <a
@@ -66,7 +66,7 @@ export default async function Home() {
                 </span>
                 <span className="text-xl font-bold text-[#6C757D] ml-2">戸</span>
               </div>
-              <p className="text-[#6C757D] text-xs mt-6">AIが10分おきに更新</p>
+              <p className="text-[#6C757D] text-xs mt-6">リアルタイム更新中</p>
             </div>
           </div>
         </div>
@@ -75,6 +75,12 @@ export default async function Home() {
       {/* 信頼セクション（3カラム） */}
       <section className="py-24 bg-[#F3F4F5]">
         <div className="max-w-7xl mx-auto px-8">
+          <h2
+            className="text-4xl font-extrabold text-[#1A1A1A] tracking-tight mb-12"
+            style={{ fontFamily: "Manrope, sans-serif" }}
+          >
+            JKKの魅力
+          </h2>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             <div className="flex flex-col items-start gap-4 p-8 bg-white rounded-lg border border-[#1A1A1A]/5 shadow-[0_12px_40px_rgba(26,26,26,0.06)]">
               <span className="material-symbols-outlined text-[#1A1A1A] text-4xl">
@@ -116,7 +122,7 @@ export default async function Home() {
                 現在の空き家一覧
               </h2>
               <p className="text-[#6C757D]">
-                AIが10分おきに監視。今すぐ申し込める空き家を表示しています。
+                今すぐ申し込める空き家を表示しています。
               </p>
             </div>
           </div>

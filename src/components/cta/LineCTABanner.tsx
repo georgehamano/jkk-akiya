@@ -36,7 +36,7 @@ export function LineCTABanner({ variant }: { variant: Variant }) {
       >
         JKKの空き家、最速でゲットしたいなら
       </p>
-      <p className="text-sm mb-10 text-white/70">AIが10分おきに監視。空きが出た瞬間にあなたのLINEへ。</p>
+      <p className="text-sm mb-10 text-white/70">空きが出た瞬間にあなたのLINEへ。</p>
       <a
         href={LINE_ADD_FRIEND_URL}
         className="inline-flex items-center gap-3 bg-[#06C755] text-white font-bold px-12 py-6 rounded-lg text-xl transition-all hover:opacity-90 active:scale-95 shadow-xl shadow-black/20"
