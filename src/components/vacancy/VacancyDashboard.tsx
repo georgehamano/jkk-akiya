@@ -26,33 +26,37 @@ export function VacancyDashboard() {
 
   if (loading) {
     return (
-      <div className="text-center py-16 text-gray-400">
-        <div className="text-4xl mb-3">🔍</div>
-        <p>空き家情報を取得中...</p>
+      <div className="text-center py-24">
+        <span className="material-symbols-outlined text-[#6C757D] text-5xl mb-4 block animate-pulse">
+          search
+        </span>
+        <p className="text-[#6C757D] text-sm">空き家情報を取得中...</p>
       </div>
     );
   }
 
   if (!data || data.properties.length === 0) {
     return (
-      <div className="text-center py-16 text-gray-500">
-        <div className="text-4xl mb-3">🏠</div>
-        <p className="font-bold mb-1">現在、空き家情報はありません</p>
-        <p className="text-sm">新しい空きが出た瞬間にLINEでお知らせします</p>
+      <div className="text-center py-24">
+        <span className="material-symbols-outlined text-[#6C757D] text-5xl mb-4 block">
+          home
+        </span>
+        <p className="font-bold text-[#1A1A1A] mb-2">現在、空き家情報はありません</p>
+        <p className="text-[#6C757D] text-sm">新しい空きが出た瞬間にLINEでお知らせします</p>
       </div>
     );
   }
 
   return (
     <div>
-      <div className="flex items-center justify-between mb-4">
+      <div className="flex items-center justify-between mb-8">
         <p className="text-[#6C757D] text-sm">
           {data.properties.length}物件 / 合計{data.properties.reduce((s, p) => s + p.total, 0)}戸
         </p>
         <ElapsedTime updatedAt={data.updated_at} />
       </div>
 
-      <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+      <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
         {data.properties.map((property, i) => (
           <>
             <PropertyCard key={property.name} property={property} />

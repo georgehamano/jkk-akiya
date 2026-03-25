@@ -2,6 +2,7 @@ export type Property = {
   name: string;
   total: number;
   rooms: Record<string, number>;
+  image_url?: string;
 };
 
 export type VacancyData = {

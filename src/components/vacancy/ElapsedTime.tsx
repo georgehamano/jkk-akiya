@@ -12,6 +12,11 @@ export function ElapsedTime({ updatedAt }: { updatedAt: string }) {
   }, [updatedAt]);
 
   return (
-    <span className="text-sm font-medium text-[#001F5B]">⚡ {label}</span>
+    <span className="inline-flex items-center gap-1.5 text-sm font-medium text-[#1A1A1A]">
+      <span className="material-symbols-outlined text-base" style={{ fontVariationSettings: "'FILL' 1" }}>
+        bolt
+      </span>
+      {label}
+    </span>
   );
 }

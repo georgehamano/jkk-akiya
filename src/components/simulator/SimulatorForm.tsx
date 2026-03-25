@@ -16,19 +16,19 @@ export function SimulatorForm() {
 
   return (
     <div>
-      <div className="bg-white rounded-2xl border border-gray-100 shadow-sm p-6 mb-6">
-        <label className="block text-sm font-bold text-gray-700 mb-2">
+      <div className="bg-white rounded-lg border border-[#1A1A1A]/5 shadow-[0_12px_40px_rgba(26,26,26,0.06)] p-6 mb-6">
+        <label className="block text-sm font-bold text-[#1A1A1A] mb-3">
           希望の家賃（月額）
         </label>
-        <div className="flex items-center gap-2">
+        <div className="flex items-center gap-3">
           <input
             type="number"
             value={rent}
             onChange={(e) => setRent(e.target.value)}
             placeholder="70000"
-            className="border border-gray-300 rounded-lg px-4 py-2 text-lg w-44 focus:outline-none focus:ring-2 focus:ring-green-400"
+            className="border border-[#1A1A1A]/20 rounded-[4px] px-4 py-3 text-lg w-44 focus:outline-none focus:border-[#1A1A1A] transition-colors bg-white"
           />
-          <span className="text-gray-500">円 / 月</span>
+          <span className="text-[#6C757D]">円 / 月</span>
         </div>
       </div>
 
@@ -48,12 +48,15 @@ export function SimulatorForm() {
             />
           </div>
 
-          <div className="bg-green-50 border border-green-200 rounded-2xl p-5 text-center">
-            <p className="text-sm text-green-700 mb-1">{YEARS}年間でJKKを選ぶと</p>
-            <p className="text-3xl font-bold text-green-700">
+          <div className="bg-[#F0F0F0] border border-[#1A1A1A]/10 rounded-[4px] p-6 text-center">
+            <p className="text-sm text-[#6C757D] mb-2">{YEARS}年間でJKKを選ぶと</p>
+            <p
+              className="text-4xl font-extrabold text-[#1A1A1A] tracking-tighter"
+              style={{ fontFamily: "Manrope, sans-serif" }}
+            >
               {fmt(result.saving)}円 お得！
             </p>
-            <p className="text-xs text-green-600 mt-1">※ 敷金は退去時に返却されるため除いて計算</p>
+            <p className="text-xs text-[#6C757D] mt-2">※ 敷金は退去時に返却されるため除いて計算</p>
           </div>
 
           <LineCTABanner variant="inline" />
@@ -90,16 +93,31 @@ function ResultCard({
   label: string; initialCost: number; totalCost: number; highlight?: boolean;
 }) {
   return (
-    <div className={`rounded-2xl border p-5 ${highlight ? "border-green-400 bg-green-50" : "border-gray-200 bg-white"}`}>
-      <p className={`text-xs font-bold mb-3 ${highlight ? "text-green-700" : "text-gray-500"}`}>{label}</p>
-      <div className="space-y-1 text-sm text-gray-700">
+    <div
+      className={`rounded-[4px] border p-5 ${
+        highlight
+          ? "bg-[#F0F0F0] border-[#1A1A1A]"
+          : "bg-white border-[#1A1A1A]/10 shadow-[0_12px_40px_rgba(26,26,26,0.06)]"
+      }`}
+    >
+      <p
+        className={`text-xs font-bold mb-4 ${highlight ? "text-[#1A1A1A]" : "text-[#6C757D]"}`}
+        style={{ fontFamily: "Manrope, sans-serif" }}
+      >
+        {label}
+      </p>
+      <div className="space-y-2 text-sm text-[#6C757D]">
         <div className="flex justify-between">
           <span>初期費用</span>
-          <span className="font-bold">{fmt(initialCost)}円</span>
+          <span className={`font-bold ${highlight ? "text-[#1A1A1A]" : "text-[#1A1A1A]"}`}>
+            {fmt(initialCost)}円
+          </span>
         </div>
         <div className="flex justify-between">
           <span>{YEARS}年間合計</span>
-          <span className="font-bold">{fmt(totalCost)}円</span>
+          <span className={`font-bold ${highlight ? "text-[#1A1A1A]" : "text-[#1A1A1A]"}`}>
+            {fmt(totalCost)}円
+          </span>
         </div>
       </div>
     </div>

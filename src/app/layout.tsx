@@ -1,10 +1,7 @@
 import type { Metadata } from "next";
-import { Geist } from "next/font/google";
 import "./globals.css";
 import { Header } from "@/components/layout/Header";
 import { LineCTABanner } from "@/components/cta/LineCTABanner";
-
-const geist = Geist({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
   title: "JKK空き家速報 — 東京都住宅供給公社の空き家をリアルタイム監視",
@@ -15,12 +12,12 @@ export const metadata: Metadata = {
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="ja">
-      <body className={`${geist.className} bg-[#F8F9FA] text-[#333333]`}>
+      <body className="bg-[#F8F9FA] text-[#191c1d]">
         <Header />
-        <main className="max-w-5xl mx-auto px-4 py-12">{children}</main>
+        <main>{children}</main>
         <footer>
           <LineCTABanner variant="footer" />
-          <div className="text-center text-xs text-[#6C757D] py-4">
+          <div className="bg-[#1A1A1A] text-center text-xs text-white/50 py-4">
             © 2026 JKK空き家速報 — 非公式サービス
           </div>
         </footer>
