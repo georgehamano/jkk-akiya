@@ -3,6 +3,7 @@ export type Property = {
   total: number;
   rooms: Record<string, number>;
   image_url?: string;
+  location?: string;
 };
 
 export type VacancyData = {

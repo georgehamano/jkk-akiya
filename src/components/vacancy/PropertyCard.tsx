@@ -1,11 +1,16 @@
 import Image from "next/image";
+import Link from "next/link";
 import type { Property } from "@/types/vacancy";
 
 export function PropertyCard({ property }: { property: Property }) {
   const roomEntries = Object.entries(property.rooms).filter(([, count]) => count > 0);
+  const slug = encodeURIComponent(property.name);
 
   return (
-    <div className="group bg-white rounded-lg overflow-hidden shadow-[0_12px_40px_rgba(26,26,26,0.06)] border border-[#1A1A1A]/5 transition-transform duration-200 hover:-translate-y-1">
+    <Link
+      href={`/vacancy/${slug}`}
+      className="group bg-white rounded-lg overflow-hidden shadow-[0_12px_40px_rgba(26,26,26,0.06)] border border-[#1A1A1A]/5 transition-transform duration-200 hover:-translate-y-1 block"
+    >
       {/* 画像エリア */}
       <div className="h-48 relative overflow-hidden">
         {property.image_url ? (
@@ -48,15 +53,10 @@ export function PropertyCard({ property }: { property: Property }) {
           ))}
         </div>
 
-        <a
-          href="https://www.to-kousya.or.jp/chintai/reco/index.html"
-          target="_blank"
-          rel="noopener noreferrer"
-          className="block w-full text-center border-2 border-[#1A1A1A] text-[#1A1A1A] text-sm font-bold py-3 rounded-[4px] transition-all duration-200 hover:bg-[#1A1A1A] hover:text-white active:scale-95"
-        >
-          物件を見る
-        </a>
+        <div className="block w-full text-center border-2 border-[#1A1A1A] text-[#1A1A1A] text-sm font-bold py-3 rounded-[4px] transition-all duration-200 group-hover:bg-[#1A1A1A] group-hover:text-white">
+          詳細を見る
+        </div>
       </div>
-    </div>
+    </Link>
   );
 }
