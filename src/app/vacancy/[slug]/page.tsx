@@ -2,6 +2,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { fetchVacancies } from "@/lib/fetchVacancies";
+import type { RoomDetail } from "@/types/vacancy";
 
 const LINE_ADD_FRIEND_URL = "https://lin.ee/Y5P8ovy";
 const JKK_APPLY_URL = "https://www.to-kousya.or.jp/chintai/reco/index.html";
@@ -29,6 +30,7 @@ export default async function VacancyDetailPage({ params }: Props) {
   if (!property) notFound();
 
   const roomEntries = Object.entries(property.rooms).filter(([, count]) => count > 0);
+  const roomDetails = property.room_details ?? {};
 
   return (
     <div>
@@ -93,14 +95,38 @@ export default async function VacancyDetailPage({ params }: Props) {
               {/* 空き室内訳 */}
               <div className="bg-[#F8F9FA] rounded-lg p-6 border border-[#1A1A1A]/5">
                 <p className="text-xs text-[#6C757D] uppercase tracking-widest mb-4">現在の空き室</p>
-                <div className="flex flex-col gap-3">
-                  {roomEntries.map(([room, count]) => (
-                    <div key={room} className="flex items-center justify-between">
-                      <span className="text-[#1A1A1A] font-medium">{room}</span>
-                      <span className="font-bold text-[#1A1A1A]">{count}戸</span>
-                    </div>
-                  ))}
-                  <div className="h-px bg-[#E9ECEF] my-1" />
+                <div className="flex flex-col gap-4">
+                  {roomEntries.map(([room, count]) => {
+                    const detail: RoomDetail = roomDetails[room] ?? {};
+                    return (
+                      <div key={room}>
+                        <div className="flex items-center justify-between">
+                          <span className="text-[#1A1A1A] font-medium">{room}</span>
+                          <span className="font-bold text-[#1A1A1A]">{count}戸</span>
+                        </div>
+                        {(detail.rent || detail.area) && (
+                          <div className="flex flex-wrap gap-3 mt-1">
+                            {detail.rent && (
+                              <span className="text-sm text-[#6C757D]">
+                                家賃 <span className="font-semibold text-[#1A1A1A]">{Number(detail.rent).toLocaleString()}円</span>
+                              </span>
+                            )}
+                            {detail.fee && (
+                              <span className="text-sm text-[#6C757D]">
+                                共益費 <span className="font-semibold text-[#1A1A1A]">{Number(detail.fee).toLocaleString()}円</span>
+                              </span>
+                            )}
+                            {detail.area && (
+                              <span className="text-sm text-[#6C757D]">
+                                <span className="font-semibold text-[#1A1A1A]">{detail.area}m²</span>
+                              </span>
+                            )}
+                          </div>
+                        )}
+                      </div>
+                    );
+                  })}
+                  <div className="h-px bg-[#E9ECEF]" />
                   <div className="flex items-center justify-between">
                     <span className="text-[#1A1A1A] font-bold">合計</span>
                     <span className="font-extrabold text-[#1A1A1A] text-lg">{property.total}戸</span>
