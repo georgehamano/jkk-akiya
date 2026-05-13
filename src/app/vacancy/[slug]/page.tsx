@@ -164,6 +164,24 @@ export default async function VacancyDetailPage({ params }: Props) {
         </div>
       </section>
 
+      {/* Googleマップ */}
+      <section className="py-16 bg-white border-t border-[#1A1A1A]/5">
+        <div className="max-w-5xl mx-auto px-8">
+          <p className="text-xs text-[#6C757D] uppercase tracking-widest mb-4">アクセス</p>
+          <div className="rounded-lg overflow-hidden border border-[#1A1A1A]/5 shadow-[0_12px_40px_rgba(26,26,26,0.06)] aspect-[16/9]">
+            <iframe
+              src={`https://maps.google.com/maps?q=${encodeURIComponent(property.name)}&output=embed&hl=ja`}
+              width="100%"
+              height="100%"
+              allowFullScreen
+              loading="lazy"
+              referrerPolicy="no-referrer-when-downgrade"
+              className="w-full h-full border-0"
+            />
+          </div>
+        </div>
+      </section>
+
       {/* 一覧に戻る */}
       <section className="py-12 bg-[#F3F4F5]">
         <div className="max-w-5xl mx-auto px-8 text-center">
