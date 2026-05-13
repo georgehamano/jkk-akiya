@@ -39,8 +39,9 @@ export default async function Home() {
             <p className="text-white/60 text-xs sm:text-sm mb-4 tracking-widest uppercase">
               東京都住宅供給公社 — 非公式監視サービス
             </p>
-            <h1 className="text-4xl sm:text-5xl md:text-6xl font-extrabold text-white leading-[1.1] tracking-tighter mb-6 sm:mb-8">
-              <span className="block">JKKの空き家が出た瞬間、</span><span className="block">あなたのLINEに届く。</span>
+            <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-4xl xl:text-5xl font-extrabold text-white leading-[1.1] tracking-tighter mb-6 sm:mb-8">
+              <span className="block whitespace-nowrap">JKKの空き家が出た瞬間、</span>
+              <span className="block whitespace-nowrap">あなたのLINEに届く。</span>
             </h1>
             <p className="text-base sm:text-lg text-white/70 mb-8 sm:mb-12 leading-relaxed max-w-lg">
               礼金・更新料・仲介手数料0円の物件を誰よりも早くつかむ。
