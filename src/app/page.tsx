@@ -1,5 +1,7 @@
+import Link from "next/link";
 import { VacancyDashboard } from "@/components/vacancy/VacancyDashboard";
 import { fetchVacancies } from "@/lib/fetchVacancies";
+import { getAllArticles } from "@/lib/mdx";
 
 const LINE_ADD_FRIEND_URL = "https://lin.ee/Y5P8ovy";
 
@@ -8,6 +10,7 @@ export default async function Home() {
   const initialData = await fetchVacancies().catch(() => null);
   const propertyCount = initialData?.properties.length ?? 0;
   const unitCount = initialData?.properties.reduce((s, p) => s + p.total, 0) ?? 0;
+  const latestArticles = getAllArticles().slice(0, 3);
 
   return (
     <div>
@@ -112,6 +115,50 @@ export default async function Home() {
           </div>
         </div>
       </section>
+
+      {/* 攻略ガイドセクション */}
+      {latestArticles.length > 0 && (
+        <section className="py-24 bg-white">
+          <div className="max-w-7xl mx-auto px-8">
+            <div className="flex justify-between items-end mb-12">
+              <div>
+                <p className="text-[#6C757D] text-sm mb-3 uppercase tracking-widest">Guide</p>
+                <h2
+                  className="text-4xl font-extrabold text-[#1A1A1A] tracking-tight"
+                  style={{ fontFamily: "Manrope, sans-serif" }}
+                >
+                  JKK攻略ガイド
+                </h2>
+              </div>
+              <Link
+                href="/guide"
+                className="text-sm font-semibold text-[#1A1A1A] flex items-center gap-1 hover:opacity-60 transition-opacity"
+              >
+                すべて見る
+                <span className="material-symbols-outlined text-base">arrow_forward</span>
+              </Link>
+            </div>
+            <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+              {latestArticles.map((article) => (
+                <Link
+                  key={article.slug}
+                  href={`/guide/${article.slug}`}
+                  className="bg-[#F8F9FA] rounded-lg border border-[#1A1A1A]/5 p-6 transition-transform duration-200 hover:-translate-y-1 block"
+                >
+                  <p className="text-xs text-[#6C757D] mb-3">{article.date}</p>
+                  <h3
+                    className="font-bold text-[#1A1A1A] leading-snug mb-2"
+                    style={{ fontFamily: "Manrope, sans-serif" }}
+                  >
+                    {article.title}
+                  </h3>
+                  <p className="text-sm text-[#6C757D] line-clamp-2">{article.description}</p>
+                </Link>
+              ))}
+            </div>
+          </div>
+        </section>
+      )}
 
       {/* 物件一覧セクション */}
       <section id="vacancy-list" className="py-32 bg-[#F8F9FA]">
