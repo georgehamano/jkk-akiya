@@ -15,7 +15,6 @@ export default function GuidePage() {
       {/* ページヘッダー */}
       <section className="bg-[#F8F9FA] py-24">
         <div className="max-w-7xl mx-auto px-8">
-          <p className="text-[#6C757D] text-sm mb-4 uppercase tracking-widest">Guide</p>
           <h1
             className="text-5xl font-extrabold text-[#1A1A1A] tracking-tighter mb-4"
           >

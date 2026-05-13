@@ -122,7 +122,6 @@ export default async function Home() {
           <div className="max-w-7xl mx-auto px-8">
             <div className="flex justify-between items-end mb-12">
               <div>
-                <p className="text-[#6C757D] text-sm mb-3 uppercase tracking-widest">Guide</p>
                 <h2
                   className="text-4xl font-extrabold text-[#1A1A1A] tracking-tight"
                   style={{ fontFamily: "Manrope, sans-serif" }}
