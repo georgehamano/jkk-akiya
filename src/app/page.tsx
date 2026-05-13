@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { MessageCircle, Banknote, RefreshCw, Handshake, ArrowRight } from "lucide-react";
+import { MessageCircle, Banknote, RefreshCw, Handshake, ArrowRight, Bell, MapPin, CheckCircle } from "lucide-react";
 import { VacancyDashboard } from "@/components/vacancy/VacancyDashboard";
 import { fetchVacancies } from "@/lib/fetchVacancies";
 import { getAllArticles } from "@/lib/mdx";
@@ -106,6 +106,71 @@ export default async function Home() {
               <p className="text-[#6C757D] leading-relaxed">
                 仲介業者を介さず直接申込み。仲介手数料がかからないのも大きなメリット。
               </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* LINE通知セクション */}
+      <section className="py-24 bg-white">
+        <div className="max-w-7xl mx-auto px-8">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+            {/* 左: テキスト */}
+            <div>
+              <p className="text-[#6C757D] text-sm mb-4 tracking-widest uppercase">LINE通知サービス</p>
+              <h2
+                className="text-4xl font-extrabold text-[#1A1A1A] tracking-tight mb-6"
+                style={{ fontFamily: "Manrope, sans-serif" }}
+              >
+                気になる区だけ、<br />通知を受け取る。
+              </h2>
+              <p className="text-[#6C757D] leading-relaxed mb-10">
+                LINEで友だち追加するだけで、空きが出た瞬間に通知が届きます。
+                住みたい区だけに絞れるので、不要な通知はゼロ。
+              </p>
+              <div className="flex flex-col gap-4 mb-10">
+                {[
+                  { icon: MessageCircle, step: "1", text: "LINEで友だち追加（無料）" },
+                  { icon: MapPin,        step: "2", text: "希望の区をメッセージで送るだけで登録完了" },
+                  { icon: Bell,          step: "3", text: "その区に空きが出たら即座にLINE通知" },
+                ].map(({ icon: Icon, step, text }) => (
+                  <div key={step} className="flex items-center gap-4">
+                    <span className="w-8 h-8 rounded-full bg-[#1A1A1A] text-white text-sm font-bold flex items-center justify-center flex-shrink-0">
+                      {step}
+                    </span>
+                    <Icon size={18} className="text-[#6C757D] flex-shrink-0" />
+                    <span className="text-[#1A1A1A] font-medium">{text}</span>
+                  </div>
+                ))}
+              </div>
+              <a
+                href={LINE_ADD_FRIEND_URL}
+                className="inline-flex items-center gap-3 bg-[#06C755] text-white font-bold px-8 py-4 rounded-lg text-base transition-all duration-200 hover:opacity-90 active:scale-95 shadow-lg shadow-[#06C755]/20"
+              >
+                <MessageCircle size={20} className="fill-current" />
+                友だち追加（無料）
+              </a>
+            </div>
+
+            {/* 右: 対応区一覧 */}
+            <div className="bg-[#F8F9FA] rounded-lg border border-[#1A1A1A]/5 p-8">
+              <p className="text-xs text-[#6C757D] uppercase tracking-widest mb-5">通知対応エリア（東京23区 + 市部）</p>
+              <div className="flex flex-wrap gap-2">
+                {[
+                  "千代田区","中央区","港区","新宿区","文京区","台東区","墨田区","江東区",
+                  "品川区","目黒区","大田区","世田谷区","渋谷区","中野区","杉並区","豊島区",
+                  "北区","荒川区","板橋区","練馬区","足立区","葛飾区","江戸川区",
+                  "八王子市","立川市","武蔵野市","三鷹市","府中市","調布市","町田市",
+                ].map((ward) => (
+                  <span
+                    key={ward}
+                    className="inline-flex items-center gap-1 text-xs text-[#1A1A1A] bg-white border border-[#1A1A1A]/10 px-3 py-1 rounded-full"
+                  >
+                    <CheckCircle size={11} className="text-[#06C755]" />
+                    {ward}
+                  </span>
+                ))}
+              </div>
             </div>
           </div>
         </div>
