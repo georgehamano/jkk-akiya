@@ -15,7 +15,7 @@ export default function GuidePage() {
     <div>
       {/* ページヘッダー */}
       <section className="bg-[#F8F9FA] py-24">
-        <div className="max-w-7xl mx-auto px-8">
+        <div className="max-w-7xl mx-auto px-4 sm:px-8">
           <h1
             className="text-5xl font-extrabold text-[#1A1A1A] tracking-tighter mb-4"
           >
@@ -29,7 +29,7 @@ export default function GuidePage() {
 
       {/* 記事一覧 */}
       <section className="py-16 bg-[#F3F4F5]">
-        <div className="max-w-7xl mx-auto px-8">
+        <div className="max-w-7xl mx-auto px-4 sm:px-8">
           {articles.length === 0 ? (
             <div className="text-center py-24">
               <FileText size={48} className="text-[#6C757D] mb-4 mx-auto" />

@@ -36,8 +36,8 @@ export default async function VacancyDetailPage({ params }: Props) {
   return (
     <div>
       {/* パンくず + タイトル */}
-      <section className="bg-[#F8F9FA] py-16 border-b border-[#1A1A1A]/5">
-        <div className="max-w-5xl mx-auto px-8">
+      <section className="bg-[#F8F9FA] py-10 sm:py-16 border-b border-[#1A1A1A]/5">
+        <div className="max-w-5xl mx-auto px-4 sm:px-8">
           <nav className="flex items-center gap-2 text-sm text-[#6C757D] mb-6">
             <Link href="/" className="hover:text-[#1A1A1A] transition-colors">
               トップ
@@ -59,7 +59,7 @@ export default async function VacancyDetailPage({ params }: Props) {
           </div>
 
           <h1
-            className="text-4xl font-extrabold text-[#1A1A1A] tracking-tight"
+            className="text-2xl sm:text-4xl font-extrabold text-[#1A1A1A] tracking-tight"
             style={{ fontFamily: "Manrope, sans-serif" }}
           >
             {property.name}
@@ -69,7 +69,7 @@ export default async function VacancyDetailPage({ params }: Props) {
 
       {/* メインコンテンツ */}
       <section className="py-16 bg-white">
-        <div className="max-w-5xl mx-auto px-8">
+        <div className="max-w-5xl mx-auto px-4 sm:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-start">
 
             {/* 左: 画像 */}
@@ -166,7 +166,7 @@ export default async function VacancyDetailPage({ params }: Props) {
 
       {/* Googleマップ */}
       <section className="py-16 bg-white border-t border-[#1A1A1A]/5">
-        <div className="max-w-5xl mx-auto px-8">
+        <div className="max-w-5xl mx-auto px-4 sm:px-8">
           <p className="text-xs text-[#6C757D] uppercase tracking-widest mb-4">アクセス</p>
           <div className="rounded-lg overflow-hidden border border-[#1A1A1A]/5 shadow-[0_12px_40px_rgba(26,26,26,0.06)] aspect-[16/9]">
             <iframe
@@ -184,7 +184,7 @@ export default async function VacancyDetailPage({ params }: Props) {
 
       {/* 一覧に戻る */}
       <section className="py-12 bg-[#F3F4F5]">
-        <div className="max-w-5xl mx-auto px-8 text-center">
+        <div className="max-w-5xl mx-auto px-4 sm:px-8 text-center">
           <Link
             href="/#vacancy-list"
             className="inline-flex items-center gap-2 text-[#6C757D] hover:text-[#1A1A1A] transition-colors text-sm font-medium"
