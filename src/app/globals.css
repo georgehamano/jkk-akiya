@@ -1,5 +1,5 @@
 @import url("https://fonts.googleapis.com/css2?family=Manrope:wght@400;700;800&family=Inter:wght@400;500;600&display=swap");
-@import url("https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200&display=block");
+@import url("https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200&display=optional");
 @import "tailwindcss";
 @plugin "@tailwindcss/typography";
 
@@ -38,4 +38,9 @@ h1, h2, h3, h4, h5, h6 {
   word-wrap: normal;
   direction: ltr;
   font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+  /* フォント未読込み時にアイコン名テキストを非表示にする */
+  overflow: hidden;
+  width: 1em;
+  height: 1em;
+  vertical-align: middle;
 }
