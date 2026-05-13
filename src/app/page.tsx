@@ -2,6 +2,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { MessageCircle, Banknote, RefreshCw, Handshake, ArrowRight, Bell, MapPin, CheckCircle } from "lucide-react";
 import { VacancyDashboard } from "@/components/vacancy/VacancyDashboard";
+import { ScrollButton } from "@/components/layout/ScrollButton";
 import { fetchVacancies } from "@/lib/fetchVacancies";
 import { getAllArticles } from "@/lib/mdx";
 
@@ -54,12 +55,12 @@ export default async function Home() {
                 <MessageCircle size={20} className="fill-current" />
                 LINE友だち追加（無料）
               </a>
-              <a
-                href="#vacancy-list"
+              <ScrollButton
+                targetId="vacancy-list"
                 className="border-2 border-white/40 text-white px-8 py-4 sm:px-10 sm:py-5 rounded-lg text-base sm:text-lg font-bold transition-all hover:bg-white/10 active:scale-95 text-center"
               >
                 物件一覧を見る
-              </a>
+              </ScrollButton>
             </div>
           </div>
 
