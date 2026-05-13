@@ -43,6 +43,12 @@ export function Header() {
           >
             費用シミュレーター
           </Link>
+          <Link
+            href="/about"
+            className="text-[#6C757D] hover:text-[#1A1A1A] transition-colors px-2 py-1 rounded-sm hover:bg-[#F3F4F5]"
+          >
+            運営者について
+          </Link>
           <a
             href={LINE_ADD_FRIEND_URL}
             className="bg-[#06C755] text-white font-bold px-5 py-2.5 rounded-lg text-sm transition-all duration-200 hover:opacity-90 active:scale-95 flex items-center gap-2"
@@ -78,6 +84,13 @@ export function Header() {
             className="text-[#1A1A1A] font-medium px-4 py-3 rounded-lg hover:bg-[#F3F4F5] transition-colors"
           >
             費用シミュレーター
+          </Link>
+          <Link
+            href="/about"
+            onClick={() => setOpen(false)}
+            className="text-[#1A1A1A] font-medium px-4 py-3 rounded-lg hover:bg-[#F3F4F5] transition-colors"
+          >
+            運営者について
           </Link>
           <a
             href={LINE_ADD_FRIEND_URL}
