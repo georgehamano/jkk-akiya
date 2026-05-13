@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 import { fetchVacancies } from "@/lib/fetchVacancies";
 import type { VacancyData } from "@/types/vacancy";
 import { PropertyCard } from "./PropertyCard";
+import { VacancyTable } from "./VacancyTable";
 import { ElapsedTime } from "./ElapsedTime";
 import { LineCTABanner } from "@/components/cta/LineCTABanner";
 
@@ -55,6 +56,8 @@ export function VacancyDashboard() {
         </p>
         <ElapsedTime updatedAt={data.updated_at} />
       </div>
+
+      <VacancyTable properties={data.properties} />
 
       <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
         {data.properties.map((property, i) => (
