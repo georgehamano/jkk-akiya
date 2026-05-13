@@ -1,6 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
-import { MessageCircle, Banknote, RefreshCw, Handshake, ArrowRight, Bell, MapPin, CheckCircle } from "lucide-react";
+import { MessageCircle, ArrowRight, Bell, MapPin, CheckCircle } from "lucide-react";
+import { JkkBenefits } from "@/components/JkkBenefits";
 import { VacancyDashboard } from "@/components/vacancy/VacancyDashboard";
 import { ScrollButton } from "@/components/layout/ScrollButton";
 import { fetchVacancies } from "@/lib/fetchVacancies";
@@ -87,38 +88,16 @@ export default async function Home() {
         </div>
       </section>
 
-      {/* 信頼セクション（3カラム） */}
+      {/* JKKの魅力セクション */}
       <section className="py-16 sm:py-24 bg-[#F3F4F5]">
         <div className="max-w-7xl mx-auto px-4 sm:px-8">
           <h2
-            className="text-3xl sm:text-4xl font-extrabold text-[#1A1A1A] tracking-tight mb-8 sm:mb-12"
+            className="text-3xl sm:text-4xl font-extrabold text-[#1A1A1A] tracking-tight mb-8 sm:mb-14"
             style={{ fontFamily: "Manrope, sans-serif" }}
           >
-            JKKの魅力
+            JKKが選ばれる8つの理由
           </h2>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 sm:gap-8">
-            <div className="flex flex-col items-start gap-4 p-6 sm:p-8 bg-white rounded-lg border border-[#1A1A1A]/5 shadow-[0_12px_40px_rgba(26,26,26,0.06)]">
-              <Banknote size={36} className="text-[#1A1A1A]" />
-              <h3 className="text-xl font-bold text-[#1A1A1A]">礼金0円</h3>
-              <p className="text-[#6C757D] leading-relaxed">
-                JKKの物件は礼金が不要。初期費用を大幅に抑えてスタートできます。
-              </p>
-            </div>
-            <div className="flex flex-col items-start gap-4 p-6 sm:p-8 bg-white rounded-lg border border-[#1A1A1A]/5 shadow-[0_12px_40px_rgba(26,26,26,0.06)]">
-              <RefreshCw size={36} className="text-[#1A1A1A]" />
-              <h3 className="text-xl font-bold text-[#1A1A1A]">更新料0円</h3>
-              <p className="text-[#6C757D] leading-relaxed">
-                2年ごとの更新料も不要。長く住むほど一般賃貸との差は広がります。
-              </p>
-            </div>
-            <div className="flex flex-col items-start gap-4 p-6 sm:p-8 bg-white rounded-lg border border-[#1A1A1A]/5 shadow-[0_12px_40px_rgba(26,26,26,0.06)]">
-              <Handshake size={36} className="text-[#1A1A1A]" />
-              <h3 className="text-xl font-bold text-[#1A1A1A]">仲介手数料0円</h3>
-              <p className="text-[#6C757D] leading-relaxed">
-                仲介業者を介さず直接申込み。仲介手数料がかからないのも大きなメリット。
-              </p>
-            </div>
-          </div>
+          <JkkBenefits />
         </div>
       </section>
 
