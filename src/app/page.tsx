@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { MessageCircle, Banknote, RefreshCw, Handshake, ArrowRight } from "lucide-react";
 import { VacancyDashboard } from "@/components/vacancy/VacancyDashboard";
 import { fetchVacancies } from "@/lib/fetchVacancies";
 import { getAllArticles } from "@/lib/mdx";
@@ -35,7 +36,7 @@ export default async function Home() {
                 href={LINE_ADD_FRIEND_URL}
                 className="bg-[#06C755] text-white px-10 py-5 rounded-lg text-lg font-bold flex items-center justify-center gap-3 transition-all duration-200 hover:opacity-90 active:scale-95 shadow-lg shadow-[#06C755]/10"
               >
-                <span className="material-symbols-outlined" style={{ fontVariationSettings: "'FILL' 1" }}>chat</span>
+                <MessageCircle size={20} className="fill-current" />
                 LINE友だち追加（無料）
               </a>
               <a
@@ -86,27 +87,21 @@ export default async function Home() {
           </h2>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             <div className="flex flex-col items-start gap-4 p-8 bg-white rounded-lg border border-[#1A1A1A]/5 shadow-[0_12px_40px_rgba(26,26,26,0.06)]">
-              <span className="material-symbols-outlined text-[#1A1A1A] text-4xl">
-                currency_yen_off
-              </span>
+              <Banknote size={36} className="text-[#1A1A1A]" />
               <h3 className="text-xl font-bold text-[#1A1A1A]">礼金0円</h3>
               <p className="text-[#6C757D] leading-relaxed">
                 JKKの物件は礼金が不要。初期費用を大幅に抑えてスタートできます。
               </p>
             </div>
             <div className="flex flex-col items-start gap-4 p-8 bg-white rounded-lg border border-[#1A1A1A]/5 shadow-[0_12px_40px_rgba(26,26,26,0.06)]">
-              <span className="material-symbols-outlined text-[#1A1A1A] text-4xl">
-                autorenew
-              </span>
+              <RefreshCw size={36} className="text-[#1A1A1A]" />
               <h3 className="text-xl font-bold text-[#1A1A1A]">更新料0円</h3>
               <p className="text-[#6C757D] leading-relaxed">
                 2年ごとの更新料も不要。長く住むほど一般賃貸との差は広がります。
               </p>
             </div>
             <div className="flex flex-col items-start gap-4 p-8 bg-white rounded-lg border border-[#1A1A1A]/5 shadow-[0_12px_40px_rgba(26,26,26,0.06)]">
-              <span className="material-symbols-outlined text-[#1A1A1A] text-4xl">
-                handshake
-              </span>
+              <Handshake size={36} className="text-[#1A1A1A]" />
               <h3 className="text-xl font-bold text-[#1A1A1A]">仲介手数料0円</h3>
               <p className="text-[#6C757D] leading-relaxed">
                 仲介業者を介さず直接申込み。仲介手数料がかからないのも大きなメリット。
@@ -134,7 +129,7 @@ export default async function Home() {
                 className="text-sm font-semibold text-[#1A1A1A] flex items-center gap-1 hover:opacity-60 transition-opacity"
               >
                 すべて見る
-                <span className="material-symbols-outlined text-base">arrow_forward</span>
+                <ArrowRight size={16} />
               </Link>
             </div>
             <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">

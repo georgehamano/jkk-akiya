@@ -1,3 +1,5 @@
+import { MessageCircle } from "lucide-react";
+
 const LINE_ADD_FRIEND_URL = "https://lin.ee/Y5P8ovy";
 
 type Variant = "inline" | "footer";
@@ -19,9 +21,7 @@ export function LineCTABanner({ variant }: { variant: Variant }) {
           href={LINE_ADD_FRIEND_URL}
           className="inline-flex items-center gap-2 bg-[#06C755] text-white font-bold px-6 py-3 rounded-lg text-sm transition-all duration-200 hover:opacity-90 active:scale-95"
         >
-          <span className="material-symbols-outlined text-base" style={{ fontVariationSettings: "'FILL' 1" }}>
-            chat
-          </span>
+          <MessageCircle size={16} className="fill-current" />
           LINEで最速通知を受け取る
         </a>
       </div>
@@ -41,9 +41,7 @@ export function LineCTABanner({ variant }: { variant: Variant }) {
         href={LINE_ADD_FRIEND_URL}
         className="inline-flex items-center gap-3 bg-[#06C755] text-white font-bold px-12 py-6 rounded-lg text-xl transition-all hover:opacity-90 active:scale-95 shadow-xl shadow-black/20"
       >
-        <span className="material-symbols-outlined text-3xl" style={{ fontVariationSettings: "'FILL' 1" }}>
-          chat
-        </span>
+        <MessageCircle size={30} className="fill-current" />
         友だち追加（無料）
       </a>
     </div>

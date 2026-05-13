@@ -3,6 +3,7 @@
 import { useEffect, useState } from "react";
 import { fetchVacancies } from "@/lib/fetchVacancies";
 import type { VacancyData } from "@/types/vacancy";
+import { Search, Home } from "lucide-react";
 import { PropertyCard } from "./PropertyCard";
 import { VacancyTable } from "./VacancyTable";
 import { ElapsedTime } from "./ElapsedTime";
@@ -28,9 +29,7 @@ export function VacancyDashboard() {
   if (loading) {
     return (
       <div className="text-center py-24">
-        <span className="material-symbols-outlined text-[#6C757D] text-5xl mb-4 block animate-pulse">
-          search
-        </span>
+        <Search size={48} className="text-[#6C757D] mb-4 mx-auto animate-pulse" />
         <p className="text-[#6C757D] text-sm">空き家情報を取得中...</p>
       </div>
     );
@@ -39,9 +38,7 @@ export function VacancyDashboard() {
   if (!data || data.properties.length === 0) {
     return (
       <div className="text-center py-24">
-        <span className="material-symbols-outlined text-[#6C757D] text-5xl mb-4 block">
-          home
-        </span>
+        <Home size={48} className="text-[#6C757D] mb-4 mx-auto" />
         <p className="font-bold text-[#1A1A1A] mb-2">現在、空き家情報はありません</p>
         <p className="text-[#6C757D] text-sm">新しい空きが出た瞬間にLINEでお知らせします</p>
       </div>

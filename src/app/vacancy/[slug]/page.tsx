@@ -1,6 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
+import { MapPin, Home, ExternalLink, MessageCircle, ArrowLeft } from "lucide-react";
 import { fetchVacancies } from "@/lib/fetchVacancies";
 import type { RoomDetail } from "@/types/vacancy";
 
@@ -48,7 +49,7 @@ export default async function VacancyDetailPage({ params }: Props) {
           <div className="flex flex-wrap items-center gap-3 mb-3">
             {property.location && (
               <span className="inline-flex items-center gap-1 text-sm text-[#6C757D] bg-white border border-[#1A1A1A]/10 px-3 py-1 rounded-full">
-                <span className="material-symbols-outlined text-sm">location_on</span>
+                <MapPin size={14} />
                 {property.location}
               </span>
             )}
@@ -83,7 +84,7 @@ export default async function VacancyDetailPage({ params }: Props) {
                 />
               ) : (
                 <div className="w-full h-full flex flex-col items-center justify-center gap-2">
-                  <span className="material-symbols-outlined text-[#6C757D] text-5xl">home</span>
+                  <Home size={48} className="text-[#6C757D]" />
                   <span className="text-[#6C757D] text-sm">写真準備中</span>
                 </div>
               )}
@@ -142,14 +143,14 @@ export default async function VacancyDetailPage({ params }: Props) {
                   rel="noopener noreferrer"
                   className="flex items-center justify-center gap-2 w-full border-2 border-[#1A1A1A] text-[#1A1A1A] font-bold py-4 rounded-lg text-sm transition-all duration-200 hover:bg-[#1A1A1A] hover:text-white active:scale-95"
                 >
-                  <span className="material-symbols-outlined text-base">open_in_new</span>
+                  <ExternalLink size={16} />
                   JKKサイトで申し込む
                 </a>
                 <a
                   href={LINE_ADD_FRIEND_URL}
                   className="flex items-center justify-center gap-2 w-full bg-[#06C755] text-white font-bold py-4 rounded-lg text-sm transition-all duration-200 hover:opacity-90 active:scale-95"
                 >
-                  <span className="material-symbols-outlined text-base" style={{ fontVariationSettings: "'FILL' 1" }}>chat</span>
+                  <MessageCircle size={16} className="fill-current" />
                   空きが出たらLINEで通知を受け取る
                 </a>
               </div>
@@ -170,7 +171,7 @@ export default async function VacancyDetailPage({ params }: Props) {
             href="/#vacancy-list"
             className="inline-flex items-center gap-2 text-[#6C757D] hover:text-[#1A1A1A] transition-colors text-sm font-medium"
           >
-            <span className="material-symbols-outlined text-base">arrow_back</span>
+            <ArrowLeft size={16} />
             空き家一覧に戻る
           </Link>
         </div>

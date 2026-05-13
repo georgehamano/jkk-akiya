@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { FileText } from "lucide-react";
 import { getAllArticles } from "@/lib/mdx";
 import type { Metadata } from "next";
 
@@ -31,9 +32,7 @@ export default function GuidePage() {
         <div className="max-w-7xl mx-auto px-8">
           {articles.length === 0 ? (
             <div className="text-center py-24">
-              <span className="material-symbols-outlined text-[#6C757D] text-5xl mb-4 block">
-                article
-              </span>
+              <FileText size={48} className="text-[#6C757D] mb-4 mx-auto" />
               <p className="text-[#6C757D]">記事を準備中です。</p>
             </div>
           ) : (

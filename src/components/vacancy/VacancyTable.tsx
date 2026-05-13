@@ -2,6 +2,7 @@
 
 import Image from "next/image";
 import Link from "next/link";
+import { Building2 } from "lucide-react";
 import type { Property } from "@/types/vacancy";
 
 type Props = {
@@ -47,9 +48,7 @@ export function VacancyTable({ properties }: Props) {
                         className="object-cover w-full h-full"
                       />
                     ) : (
-                      <span className="material-symbols-outlined text-[#6C757D] text-xl">
-                        apartment
-                      </span>
+                      <Building2 size={20} className="text-[#6C757D]" />
                     )}
                   </div>
                 </td>

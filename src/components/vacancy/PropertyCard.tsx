@@ -1,5 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
+import { Home } from "lucide-react";
 import type { Property } from "@/types/vacancy";
 
 export function PropertyCard({ property }: { property: Property }) {
@@ -22,7 +23,7 @@ export function PropertyCard({ property }: { property: Property }) {
           />
         ) : (
           <div className="w-full h-full bg-[#E9ECEF] flex flex-col items-center justify-center gap-2">
-            <span className="material-symbols-outlined text-[#6C757D] text-4xl">home</span>
+            <Home size={36} className="text-[#6C757D]" />
             <span className="text-[#6C757D] text-xs">写真準備中</span>
           </div>
         )}
