@@ -1,3 +1,4 @@
+import Image from "next/image";
 import Link from "next/link";
 import { MessageCircle, Banknote, RefreshCw, Handshake, ArrowRight, Bell, MapPin, CheckCircle } from "lucide-react";
 import { VacancyDashboard } from "@/components/vacancy/VacancyDashboard";
@@ -16,32 +17,51 @@ export default async function Home() {
   return (
     <div>
       {/* ヒーローセクション */}
-      <section className="bg-[#F8F9FA] py-24 md:py-32">
-        <div className="max-w-7xl mx-auto px-8 grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+      <section className="relative overflow-hidden bg-[#1A1A1A] py-24 md:py-32">
+        {/* 背景画像 — desktop */}
+        <Image
+          src="/img/jkk-main-img.png"
+          alt=""
+          fill
+          className="object-cover object-center scale-105 hidden md:block"
+          priority
+        />
+        {/* 背景画像 — mobile */}
+        <Image
+          src="/img/jkk-main-img-sp.png"
+          alt=""
+          fill
+          className="object-cover object-center scale-105 block md:hidden"
+          priority
+        />
+        {/* 暗幕オーバーレイ（文字視認性確保） */}
+        <div className="absolute inset-0 bg-gradient-to-r from-black/70 via-black/50 to-black/30 backdrop-blur-[2px]" />
+
+        <div className="relative z-10 max-w-7xl mx-auto px-8 grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
           {/* 左: テキスト */}
           <div>
-            <p className="text-[#6C757D] text-sm mb-4 tracking-widest uppercase">
+            <p className="text-white/60 text-sm mb-4 tracking-widest uppercase">
               東京都住宅供給公社 — 非公式監視サービス
             </p>
             <h1
-              className="text-5xl md:text-6xl font-extrabold text-[#1A1A1A] leading-[1.1] tracking-tighter mb-8"
+              className="text-5xl md:text-6xl font-extrabold text-white leading-[1.1] tracking-tighter mb-8"
             >
               JKKの空き家が出た瞬間、<br />あなたのLINEに届く。
             </h1>
-            <p className="text-lg text-[#6C757D] mb-12 leading-relaxed max-w-lg">
+            <p className="text-lg text-white/70 mb-12 leading-relaxed max-w-lg">
               礼金・更新料・仲介手数料0円の物件を誰よりも早くつかむ。
             </p>
             <div className="flex flex-col sm:flex-row gap-4">
               <a
                 href={LINE_ADD_FRIEND_URL}
-                className="bg-[#06C755] text-white px-10 py-5 rounded-lg text-lg font-bold flex items-center justify-center gap-3 transition-all duration-200 hover:opacity-90 active:scale-95 shadow-lg shadow-[#06C755]/10"
+                className="bg-[#06C755] text-white px-10 py-5 rounded-lg text-lg font-bold flex items-center justify-center gap-3 transition-all duration-200 hover:opacity-90 active:scale-95 shadow-lg shadow-black/30"
               >
                 <MessageCircle size={20} className="fill-current" />
                 LINE友だち追加（無料）
               </a>
               <a
                 href="#vacancy-list"
-                className="border-2 border-[#1A1A1A]/20 text-[#1A1A1A] px-10 py-5 rounded-lg text-lg font-bold transition-all hover:bg-[#F3F4F5] active:scale-95 text-center"
+                className="border-2 border-white/40 text-white px-10 py-5 rounded-lg text-lg font-bold transition-all hover:bg-white/10 active:scale-95 text-center"
               >
                 物件一覧を見る
               </a>
@@ -49,23 +69,18 @@ export default async function Home() {
           </div>
 
           {/* 右: 物件カウンター */}
-          <div className="relative flex items-center justify-center">
-            <div className="absolute inset-0 bg-[#DBE4ED]/30 rounded-full blur-3xl opacity-50" />
-            <div className="relative bg-white rounded-lg shadow-[0_12px_40px_rgba(26,26,26,0.06)] border border-[#1A1A1A]/5 p-12 text-center w-full max-w-sm">
+          <div className="flex items-center justify-center">
+            <div className="bg-white/95 backdrop-blur-sm rounded-lg shadow-[0_24px_60px_rgba(0,0,0,0.3)] p-12 text-center w-full max-w-sm">
               <p className="text-[#6C757D] text-sm mb-6 uppercase tracking-widest">現在の空き家</p>
               <div className="mb-8">
-                <span
-                  className="text-8xl font-extrabold text-[#1A1A1A] tracking-tighter leading-none"
-                >
+                <span className="text-8xl font-extrabold text-[#1A1A1A] tracking-tighter leading-none">
                   {propertyCount}
                 </span>
                 <span className="text-2xl font-bold text-[#6C757D] ml-2">物件</span>
               </div>
               <div className="h-px bg-[#E9ECEF] mb-8" />
               <div>
-                <span
-                  className="text-5xl font-extrabold text-[#1A1A1A] tracking-tighter leading-none"
-                >
+                <span className="text-5xl font-extrabold text-[#1A1A1A] tracking-tighter leading-none">
                   {unitCount}
                 </span>
                 <span className="text-xl font-bold text-[#6C757D] ml-2">戸</span>
