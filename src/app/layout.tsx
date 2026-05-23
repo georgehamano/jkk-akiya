@@ -29,8 +29,15 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <main>{children}</main>
         <footer>
           <LineCTABanner variant="footer" />
-          <div className="bg-[#1A1A1A] text-center text-xs text-white/50 py-4">
-            © 2026 JKK空き家速報 — 非公式サービス
+          <div className="bg-[#1A1A1A] text-white/60 text-xs py-6 px-4">
+            <div className="max-w-7xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-3">
+              <p className="text-white/50">© 2026 JKK空き家速報 — 非公式サービス</p>
+              <nav className="flex items-center gap-5">
+                <a href="/about" className="hover:text-white transition-colors">運営者について</a>
+                <a href="/privacy" className="hover:text-white transition-colors">プライバシーポリシー</a>
+                <a href="/contact" className="hover:text-white transition-colors">お問い合わせ</a>
+              </nav>
+            </div>
           </div>
         </footer>
       </body>
