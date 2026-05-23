@@ -9,6 +9,7 @@ export type ArticleMeta = {
   title: string;
   description: string;
   date: string;
+  thumbnail?: string;
 };
 
 export function getAllArticles(): ArticleMeta[] {
@@ -20,7 +21,13 @@ export function getAllArticles(): ArticleMeta[] {
       const slug = f.replace(/\.mdx$/, "");
       const raw = fs.readFileSync(path.join(CONTENT_DIR, f), "utf-8");
       const { data } = matter(raw);
-      return { slug, title: data.title ?? slug, description: data.description ?? "", date: data.date ?? "" };
+      return {
+        slug,
+        title: data.title ?? slug,
+        description: data.description ?? "",
+        date: data.date ?? "",
+        thumbnail: data.thumbnail,
+      };
     })
     .sort((a, b) => (a.date < b.date ? 1 : -1));
 }
@@ -31,7 +38,13 @@ export function getArticle(slug: string): { meta: ArticleMeta; content: string }
   const raw = fs.readFileSync(filePath, "utf-8");
   const { data, content } = matter(raw);
   return {
-    meta: { slug, title: data.title ?? slug, description: data.description ?? "", date: data.date ?? "" },
+    meta: {
+      slug,
+      title: data.title ?? slug,
+      description: data.description ?? "",
+      date: data.date ?? "",
+      thumbnail: data.thumbnail,
+    },
     content,
   };
 }

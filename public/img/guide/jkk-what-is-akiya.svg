@@ -1,0 +1,32 @@
+<svg width="1200" height="675" viewBox="0 0 1200 675" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="JKK空き家とは？ 0円の仕組み">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#1E293B"/>
+      <stop offset="100%" stop-color="#475569"/>
+    </linearGradient>
+    <pattern id="dots" x="0" y="0" width="40" height="40" patternUnits="userSpaceOnUse">
+      <circle cx="2" cy="2" r="1.4" fill="white" fill-opacity="0.06"/>
+    </pattern>
+  </defs>
+
+  <rect width="1200" height="675" fill="url(#bg)"/>
+  <rect width="1200" height="675" fill="url(#dots)"/>
+
+  <circle cx="1080" cy="130" r="220" fill="white" fill-opacity="0.06"/>
+  <circle cx="970" cy="90"  r="90"  fill="white" fill-opacity="0.05"/>
+  <circle cx="1130" cy="600" r="140" fill="white" fill-opacity="0.04"/>
+
+  <g transform="translate(80, 88)">
+    <rect x="0" y="0" width="172" height="48" rx="24" fill="white" fill-opacity="0.15"/>
+    <text x="86" y="31" text-anchor="middle" fill="#94A3B8" font-family="-apple-system, BlinkMacSystemFont, &quot;Hiragino Sans&quot;, &quot;Yu Gothic&quot;, &quot;Meiryo&quot;, sans-serif" font-size="22" font-weight="700" letter-spacing="0.05em">はじめに</text>
+  </g>
+
+  <text fill="white" font-family="-apple-system, BlinkMacSystemFont, &quot;Hiragino Sans&quot;, &quot;Yu Gothic&quot;, &quot;Meiryo&quot;, sans-serif" font-weight="900" font-size="82" style="letter-spacing:-0.025em">
+    <tspan x="80" y="360">JKK空き家とは？</tspan>
+    <tspan x="80" y="458">0円の仕組み</tspan>
+  </text>
+
+  <rect x="80" y="572" width="48" height="4" rx="2" fill="white" fill-opacity="0.6"/>
+  <text x="80" y="618" fill="white" fill-opacity="0.85" font-family="-apple-system, BlinkMacSystemFont, &quot;Hiragino Sans&quot;, &quot;Yu Gothic&quot;, &quot;Meiryo&quot;, sans-serif" font-size="24" font-weight="700">JKK空き家速報</text>
+  <text x="80" y="648" fill="white" fill-opacity="0.55" font-family="-apple-system, BlinkMacSystemFont, &quot;Hiragino Sans&quot;, &quot;Yu Gothic&quot;, &quot;Meiryo&quot;, sans-serif" font-size="16" font-weight="500" letter-spacing="0.1em">攻略ガイド / GUIDE</text>
+</svg>

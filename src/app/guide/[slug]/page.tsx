@@ -24,6 +24,16 @@ export default async function ArticlePage({ params }: Props) {
 
   return (
     <div className="max-w-2xl mx-auto">
+      {article.meta.thumbnail && (
+        <div className="aspect-[16/9] w-full rounded-xl overflow-hidden mb-6 bg-[#1A1A1A]/5">
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img
+            src={article.meta.thumbnail}
+            alt=""
+            className="w-full h-full object-cover"
+          />
+        </div>
+      )}
       <p className="text-xs text-gray-400 mb-2">{article.meta.date}</p>
       <h1 className="text-2xl font-bold leading-snug mb-6">{article.meta.title}</h1>
 

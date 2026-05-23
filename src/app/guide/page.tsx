@@ -41,16 +41,29 @@ export default function GuidePage() {
                 <Link
                   key={article.slug}
                   href={`/guide/${article.slug}`}
-                  className="bg-white rounded-lg border border-[#1A1A1A]/5 shadow-[0_12px_40px_rgba(26,26,26,0.06)] p-6 transition-transform duration-200 hover:-translate-y-1 block"
+                  className="bg-white rounded-lg border border-[#1A1A1A]/5 shadow-[0_12px_40px_rgba(26,26,26,0.06)] overflow-hidden transition-transform duration-200 hover:-translate-y-1 block"
                 >
-                  <p className="text-xs text-[#6C757D] mb-3">{article.date}</p>
-                  <h2
-                    className="font-bold text-[#1A1A1A] leading-snug mb-2 text-lg"
-                    style={{ fontFamily: "Manrope, sans-serif" }}
-                  >
-                    {article.title}
-                  </h2>
-                  <p className="text-sm text-[#6C757D] line-clamp-2">{article.description}</p>
+                  {article.thumbnail && (
+                    <div className="aspect-[16/9] w-full bg-[#1A1A1A]/5">
+                      {/* eslint-disable-next-line @next/next/no-img-element */}
+                      <img
+                        src={article.thumbnail}
+                        alt=""
+                        className="w-full h-full object-cover"
+                        loading="lazy"
+                      />
+                    </div>
+                  )}
+                  <div className="p-6">
+                    <p className="text-xs text-[#6C757D] mb-3">{article.date}</p>
+                    <h2
+                      className="font-bold text-[#1A1A1A] leading-snug mb-2 text-lg"
+                      style={{ fontFamily: "Manrope, sans-serif" }}
+                    >
+                      {article.title}
+                    </h2>
+                    <p className="text-sm text-[#6C757D] line-clamp-2">{article.description}</p>
+                  </div>
                 </Link>
               ))}
             </div>
