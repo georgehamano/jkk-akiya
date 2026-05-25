@@ -93,3 +93,4 @@ LINE Official Account Manager で「リッチメニュー」を作成し、ボ�
 | `LINE_CHANNEL_ACCESS_TOKEN`| LINE 返信用トークン                 |
 | `GITHUB_PREFS_PAT`         | jkk-akiya-monitor への書き込み権限   |
 | `NEXT_PUBLIC_VACANCIES_URL`| データJSON URL（未設定時はデフォルト使用）  |
+| `ADMIN_PASSWORD`           | `/admin/*` の Basic Auth パスワード（ユーザー名は任意） |
