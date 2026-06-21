@@ -1,5 +1,6 @@
 import { notFound } from "next/navigation";
 import { MDXRemote } from "next-mdx-remote/rsc";
+import remarkGfm from "remark-gfm";
 import { getAllArticles, getArticle } from "@/lib/mdx";
 import { LineCTABanner } from "@/components/cta/LineCTABanner";
 import type { Metadata } from "next";
@@ -40,7 +41,10 @@ export default async function ArticlePage({ params }: Props) {
       <LineCTABanner variant="inline" />
 
       <div className="prose prose-gray mt-8">
-        <MDXRemote source={article.content} />
+        <MDXRemote
+          source={article.content}
+          options={{ mdxOptions: { remarkPlugins: [remarkGfm] } }}
+        />
       </div>
 
       <div className="mt-12">
