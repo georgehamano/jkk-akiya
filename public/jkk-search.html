@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex">
+<title>JKK 先着順あき家 検索結果へ移動中…</title>
+<style>
+  :root { color-scheme: light dark; }
+  body{margin:0;min-height:100vh;display:flex;align-items:center;justify-content:center;
+    font-family:-apple-system,BlinkMacSystemFont,"Hiragino Sans","Yu Gothic","Meiryo",sans-serif;
+    background:#F8F9FA;color:#1A1A1A;padding:24px;text-align:center;line-height:1.7}
+  @media (prefers-color-scheme:dark){body{background:#111;color:#eee}}
+  .card{max-width:420px}
+  .spinner{width:38px;height:38px;margin:0 auto 20px;border:4px solid rgba(6,199,85,.25);
+    border-top-color:#06C755;border-radius:50%;animation:spin .8s linear infinite}
+  @keyframes spin{to{transform:rotate(360deg)}}
+  h1{font-size:18px;margin:0 0 8px}
+  p{font-size:14px;opacity:.75;margin:0 0 20px}
+  .btn{display:inline-block;background:#06C755;color:#fff;font-weight:700;
+    padding:14px 28px;border:0;border-radius:10px;font-size:16px;cursor:pointer;text-decoration:none}
+</style>
+</head>
+<body>
+  <div class="card">
+    <div class="spinner"></div>
+    <h1>JKK 先着順あき家の検索結果へ移動しています…</h1>
+    <p>自動で移動しない場合は下のボタンを押してください。</p>
+    <form id="jkkForm" method="POST"
+          action="https://jhomes.to-kousya.or.jp/search/jkknet/service/akiyaJyokenDirect">
+      <input type="hidden" name="redirect" value="true">
+      <input type="hidden" name="url"
+             value="https://jhomes.to-kousya.or.jp/search/jkknet/service/akiyaJyokenDirect">
+      <button class="btn" type="submit">検索結果を開く</button>
+    </form>
+  </div>
+  <script>
+    // 読み込み後すぐに JKK 公式へ POST 遷移（同一ウィンドウ・popup 不使用）
+    window.addEventListener('load', function () {
+      setTimeout(function () { document.getElementById('jkkForm').submit(); }, 400);
+    });
+  </script>
+</body>
+</html>
