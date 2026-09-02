@@ -6,7 +6,8 @@ import { fetchVacancies } from "@/lib/fetchVacancies";
 import type { RoomDetail } from "@/types/vacancy";
 
 const LINE_ADD_FRIEND_URL = "https://lin.ee/Y5P8ovy";
-const JKK_APPLY_URL = "https://www.to-kousya.or.jp/chintai/reco/index.html";
+// JKK公式の「先着順あき家 検索結果」へ直接遷移する転送ページ（popup無し・同一ウィンドウ）
+const JKK_APPLY_URL = "/jkk-search.html";
 
 type Props = {
   params: Promise<{ slug: string }>;
@@ -144,7 +145,7 @@ export default async function VacancyDetailPage({ params }: Props) {
                   className="flex items-center justify-center gap-2 w-full border-2 border-[#1A1A1A] text-[#1A1A1A] font-bold py-4 rounded-lg text-sm transition-all duration-200 hover:bg-[#1A1A1A] hover:text-white active:scale-95"
                 >
                   <ExternalLink size={16} />
-                  JKKサイトで申し込む
+                  JKK公式サイトで探す・申し込む
                 </a>
                 <a
                   href={LINE_ADD_FRIEND_URL}
@@ -156,8 +157,8 @@ export default async function VacancyDetailPage({ params }: Props) {
               </div>
 
               <p className="text-xs text-[#6C757D] leading-relaxed">
-                ※ 申込みはJKK（東京都住宅供給公社）の公式サイトから行ってください。
-                このサイトは非公式の情報サービスです。
+                ※ ボタンからJKK（東京都住宅供給公社）公式の先着順あき家 検索結果ページへ移動します。
+                一覧からこの物件を選んでお申し込みください。このサイトは非公式の情報サービスです。
               </p>
             </div>
           </div>

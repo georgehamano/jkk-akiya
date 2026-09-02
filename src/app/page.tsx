@@ -1,6 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
-import { MessageCircle, ArrowRight, Bell, MapPin, CheckCircle } from "lucide-react";
+import { MessageCircle, ArrowRight, Bell, MapPin, CheckCircle, ExternalLink } from "lucide-react";
 import { JkkBenefits } from "@/components/JkkBenefits";
 import { VacancyDashboard } from "@/components/vacancy/VacancyDashboard";
 import { ScrollButton } from "@/components/layout/ScrollButton";
@@ -214,9 +214,16 @@ export default async function Home() {
             <h2 className="text-3xl sm:text-4xl font-extrabold text-[#1A1A1A] tracking-tight mb-3 sm:mb-4">
               現在の空き家一覧
             </h2>
-            <p className="text-[#6C757D]">
+            <p className="text-[#6C757D] mb-6">
               今すぐ申し込める空き家を表示しています。
             </p>
+            <a
+              href="/jkk-search.html"
+              className="inline-flex items-center justify-center gap-2 bg-[#1A1A1A] text-white font-bold px-6 py-3 rounded-lg text-sm transition-all duration-200 hover:opacity-90 active:scale-95"
+            >
+              <ExternalLink size={16} />
+              JKK公式サイトで空き家を検索・申込
+            </a>
           </div>
           <VacancyDashboard />
         </div>
