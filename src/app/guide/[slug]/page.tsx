@@ -3,6 +3,7 @@ import { MDXRemote } from "next-mdx-remote/rsc";
 import remarkGfm from "remark-gfm";
 import { getAllArticles, getArticle } from "@/lib/mdx";
 import { LineCTABanner } from "@/components/cta/LineCTABanner";
+import { AffiliateBanner } from "@/components/cta/AffiliateBanner";
 import type { Metadata } from "next";
 
 type Props = { params: Promise<{ slug: string }> };
@@ -46,6 +47,8 @@ export default async function ArticlePage({ params }: Props) {
           options={{ mdxOptions: { remarkPlugins: [remarkGfm] } }}
         />
       </div>
+
+      <AffiliateBanner className="mt-12" />
 
       <div className="mt-12">
         <LineCTABanner variant="inline" />
