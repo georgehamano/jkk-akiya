@@ -1,9 +1,9 @@
-import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import { MapPin, Home, ExternalLink, MessageCircle, ArrowLeft } from "lucide-react";
+import { MapPin, Train, Building2, CalendarDays, ExternalLink, MessageCircle, ArrowLeft } from "lucide-react";
 import { fetchVacancies } from "@/lib/fetchVacancies";
 import { AffiliateBanner } from "@/components/cta/AffiliateBanner";
+import { PropertyGallery } from "@/components/vacancy/PropertyGallery";
 import type { RoomDetail } from "@/types/vacancy";
 
 const LINE_ADD_FRIEND_URL = "https://lin.ee/Y5P8ovy";
@@ -74,23 +74,17 @@ export default async function VacancyDetailPage({ params }: Props) {
         <div className="max-w-5xl mx-auto px-4 sm:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-start">
 
-            {/* 左: 画像 */}
-            <div className="rounded-lg overflow-hidden shadow-[0_12px_40px_rgba(26,26,26,0.06)] border border-[#1A1A1A]/5 aspect-[4/3] relative bg-[#E9ECEF]">
-              {property.image_url ? (
-                <Image
-                  src={property.image_url}
-                  alt={property.name}
-                  fill
-                  className="object-cover"
-                  priority
-                />
-              ) : (
-                <div className="w-full h-full flex flex-col items-center justify-center gap-2">
-                  <Home size={48} className="text-[#6C757D]" />
-                  <span className="text-[#6C757D] text-sm">写真準備中</span>
-                </div>
-              )}
-            </div>
+            {/* 左: 画像ギャラリー */}
+            <PropertyGallery
+              images={
+                property.images && property.images.length > 0
+                  ? property.images
+                  : property.image_url
+                    ? [property.image_url]
+                    : []
+              }
+              name={property.name}
+            />
 
             {/* 右: 詳細 + CTA */}
             <div className="flex flex-col gap-6">
@@ -136,6 +130,46 @@ export default async function VacancyDetailPage({ params }: Props) {
                   </div>
                 </div>
               </div>
+
+              {/* 物件情報 */}
+              {(property.transport || property.built || property.floors || property.total_units || property.term) && (
+                <div className="bg-[#F8F9FA] rounded-lg p-6 border border-[#1A1A1A]/5">
+                  <p className="text-xs text-[#6C757D] uppercase tracking-widest mb-4">物件情報</p>
+                  <dl className="flex flex-col gap-3 text-sm">
+                    {property.transport && (
+                      <div className="flex gap-3">
+                        <dt className="shrink-0 flex items-center gap-1 text-[#6C757D] w-16"><Train size={14} />交通</dt>
+                        <dd className="text-[#1A1A1A] leading-relaxed whitespace-pre-line">{property.transport}</dd>
+                      </div>
+                    )}
+                    {property.built && (
+                      <div className="flex gap-3">
+                        <dt className="shrink-0 flex items-center gap-1 text-[#6C757D] w-16"><CalendarDays size={14} />築年</dt>
+                        <dd className="text-[#1A1A1A]">{property.built} 竣工</dd>
+                      </div>
+                    )}
+                    {(property.floors || property.total_units) && (
+                      <div className="flex gap-3">
+                        <dt className="shrink-0 flex items-center gap-1 text-[#6C757D] w-16"><Building2 size={14} />規模</dt>
+                        <dd className="text-[#1A1A1A]">
+                          {[property.floors, property.total_units ? `全${property.total_units}戸` : null].filter(Boolean).join("・")}
+                        </dd>
+                      </div>
+                    )}
+                    {property.term && (
+                      <div className="flex gap-3">
+                        <dt className="shrink-0 text-[#6C757D] w-16">定期借家</dt>
+                        <dd className="text-[#1A1A1A]">{property.term}</dd>
+                      </div>
+                    )}
+                  </dl>
+                  {property.notes && (
+                    <p className="mt-4 pt-4 border-t border-[#E9ECEF] text-xs text-[#6C757D] leading-relaxed whitespace-pre-line">
+                      {property.notes}
+                    </p>
+                  )}
+                </div>
+              )}
 
               {/* CTA */}
               <div className="flex flex-col gap-3">
