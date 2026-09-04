@@ -10,6 +10,8 @@ export type ArticleMeta = {
   description: string;
   date: string;
   thumbnail?: string;
+  /** 内容が薄く検索インデックス対象にしない記事に true を設定する */
+  noindex?: boolean;
 };
 
 export function getAllArticles(): ArticleMeta[] {
@@ -27,6 +29,7 @@ export function getAllArticles(): ArticleMeta[] {
         description: data.description ?? "",
         date: data.date ?? "",
         thumbnail: data.thumbnail,
+        noindex: data.noindex === true,
       };
     })
     .sort((a, b) => (a.date < b.date ? 1 : -1));
@@ -44,6 +47,7 @@ export function getArticle(slug: string): { meta: ArticleMeta; content: string }
       description: data.description ?? "",
       date: data.date ?? "",
       thumbnail: data.thumbnail,
+      noindex: data.noindex === true,
     },
     content,
   };

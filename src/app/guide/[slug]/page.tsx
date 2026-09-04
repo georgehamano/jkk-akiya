@@ -3,7 +3,6 @@ import { MDXRemote } from "next-mdx-remote/rsc";
 import remarkGfm from "remark-gfm";
 import { getAllArticles, getArticle } from "@/lib/mdx";
 import { LineCTABanner } from "@/components/cta/LineCTABanner";
-import { AffiliateBanner } from "@/components/cta/AffiliateBanner";
 import type { Metadata } from "next";
 
 type Props = { params: Promise<{ slug: string }> };
@@ -16,7 +15,12 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { slug } = await params;
   const article = getArticle(slug);
   if (!article) return {};
-  return { title: `${article.meta.title} — JKK空き家速報`, description: article.meta.description };
+  return {
+    title: `${article.meta.title} — JKK空き家速報`,
+    description: article.meta.description,
+    // 内容が薄い記事は検索インデックス対象から除外する
+    ...(article.meta.noindex ? { robots: { index: false, follow: true } } : {}),
+  };
 }
 
 export default async function ArticlePage({ params }: Props) {
@@ -47,8 +51,6 @@ export default async function ArticlePage({ params }: Props) {
           options={{ mdxOptions: { remarkPlugins: [remarkGfm] } }}
         />
       </div>
-
-      <AffiliateBanner className="mt-12" />
 
       <div className="mt-12">
         <LineCTABanner variant="inline" />

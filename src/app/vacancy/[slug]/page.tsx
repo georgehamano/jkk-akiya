@@ -2,7 +2,6 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import { MapPin, Train, Building2, CalendarDays, ExternalLink, MessageCircle, ArrowLeft } from "lucide-react";
 import { fetchVacancies } from "@/lib/fetchVacancies";
-import { AffiliateBanner } from "@/components/cta/AffiliateBanner";
 import { PropertyGallery } from "@/components/vacancy/PropertyGallery";
 import type { RoomDetail } from "@/types/vacancy";
 
@@ -195,8 +194,6 @@ export default async function VacancyDetailPage({ params }: Props) {
                 ※ ボタンからJKK（東京都住宅供給公社）公式の先着順あき家 検索結果ページへ移動します。
                 一覧からこの物件を選んでお申し込みください。このサイトは非公式の情報サービスです。
               </p>
-
-              <AffiliateBanner className="pt-2" />
             </div>
           </div>
         </div>

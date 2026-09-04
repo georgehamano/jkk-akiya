@@ -9,7 +9,9 @@ export const metadata: Metadata = {
 };
 
 export default function GuidePage() {
-  const articles = getAllArticles();
+  // 内容の充実した記事を先に表示する
+  const all = getAllArticles();
+  const articles = [...all.filter((a) => !a.noindex), ...all.filter((a) => a.noindex)];
 
   return (
     <div>

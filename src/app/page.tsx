@@ -13,7 +13,7 @@ export default async function Home() {
   const initialData = await fetchVacancies().catch(() => null);
   const propertyCount = initialData?.properties.length ?? 0;
   const unitCount = initialData?.properties.reduce((s, p) => s + p.total, 0) ?? 0;
-  const latestArticles = getAllArticles().slice(0, 3);
+  const latestArticles = getAllArticles().filter((a) => !a.noindex).slice(0, 3);
 
   return (
     <div>
