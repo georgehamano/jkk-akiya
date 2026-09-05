@@ -11,6 +11,10 @@ export const metadata: Metadata = {
   other: {
     "google-adsense-account": "ca-pub-2684938307917742",
   },
+  verification: {
+    // Google Search Console のサイト所有権確認
+    google: "95bLhCiLnQasyJsgaeRfy_Yd4Bw8c_Kccsu3DJ-BZ3A",
+  },
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
