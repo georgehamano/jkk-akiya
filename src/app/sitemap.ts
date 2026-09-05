@@ -4,6 +4,9 @@ import { fetchVacancies } from "@/lib/fetchVacancies";
 
 const BASE = "https://jkk-akiya.com";
 
+// クローラーのアクセス時に外部フェッチへ依存しないよう1時間キャッシュする
+export const revalidate = 3600;
+
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const now = new Date();
 

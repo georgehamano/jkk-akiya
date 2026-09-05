@@ -6,7 +6,11 @@ const VACANCIES_URL =
 
 export async function fetchVacancies(): Promise<VacancyData | null> {
   try {
-    const res = await fetch(VACANCIES_URL, { cache: "no-store" });
+    // 外部データ取得が詰まってページ生成全体が止まらないよう上限を設ける
+    const res = await fetch(VACANCIES_URL, {
+      cache: "no-store",
+      signal: AbortSignal.timeout(8000),
+    });
     if (!res.ok) return null;
     return (await res.json()) as VacancyData;
   } catch {
