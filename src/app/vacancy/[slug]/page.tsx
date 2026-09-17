@@ -3,6 +3,9 @@ import { notFound } from "next/navigation";
 import { MapPin, Train, Building2, CalendarDays, ExternalLink, MessageCircle, ArrowLeft } from "lucide-react";
 import { fetchVacancies } from "@/lib/fetchVacancies";
 import { PropertyGallery } from "@/components/vacancy/PropertyGallery";
+import { formatYen, formatArea } from "@/lib/formatValue";
+import { PropertyInsights } from "@/components/vacancy/PropertyInsights";
+import { getPropertyStat } from "@/lib/propertyStats";
 import type { RoomDetail } from "@/types/vacancy";
 
 const LINE_ADD_FRIEND_URL = "https://lin.ee/Y5P8ovy";
@@ -16,9 +19,13 @@ type Props = {
 export async function generateMetadata({ params }: Props) {
   const { slug } = await params;
   const name = decodeURIComponent(slug);
+  const stat = getPropertyStat(name);
+  const insight = stat
+    ? `募集が出た回数${stat.observations}回、掲載が残る時間の中央値は${stat.median_label}（当サイト独自集計）。`
+    : "";
   return {
-    title: `${name} — JKK空き家速報`,
-    description: `${name}の空き家情報。間取り・戸数をリアルタイムで確認できます。`,
+    title: `${name}の空き家状況・募集傾向 — JKK空き家速報`,
+    description: `${name}（JKK）の空き室・間取り・家賃をリアルタイムで確認。${insight}`,
   };
 }
 
@@ -100,21 +107,21 @@ export default async function VacancyDetailPage({ params }: Props) {
                           <span className="text-[#1A1A1A] font-medium">{room}</span>
                           <span className="font-bold text-[#1A1A1A]">{count}戸</span>
                         </div>
-                        {(detail.rent || detail.area) && (
+                        {(formatYen(detail.rent) || formatArea(detail.area)) && (
                           <div className="flex flex-wrap gap-3 mt-1">
-                            {detail.rent && (
+                            {formatYen(detail.rent) && (
                               <span className="text-sm text-[#6C757D]">
-                                家賃 <span className="font-semibold text-[#1A1A1A]">{Number(detail.rent).toLocaleString()}円</span>
+                                家賃 <span className="font-semibold text-[#1A1A1A]">{formatYen(detail.rent)}円</span>
                               </span>
                             )}
-                            {detail.fee && (
+                            {formatYen(detail.fee) && (
                               <span className="text-sm text-[#6C757D]">
-                                共益費 <span className="font-semibold text-[#1A1A1A]">{Number(detail.fee).toLocaleString()}円</span>
+                                共益費 <span className="font-semibold text-[#1A1A1A]">{formatYen(detail.fee)}円</span>
                               </span>
                             )}
-                            {detail.area && (
+                            {formatArea(detail.area) && (
                               <span className="text-sm text-[#6C757D]">
-                                <span className="font-semibold text-[#1A1A1A]">{detail.area}m²</span>
+                                <span className="font-semibold text-[#1A1A1A]">{formatArea(detail.area)}m²</span>
                               </span>
                             )}
                           </div>
@@ -198,6 +205,8 @@ export default async function VacancyDetailPage({ params }: Props) {
           </div>
         </div>
       </section>
+
+      <PropertyInsights name={property.name} />
 
       {/* Googleマップ */}
       <section className="py-16 bg-white border-t border-[#1A1A1A]/5">
